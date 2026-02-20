@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+main {
+    @apply font-mono
+}
+
+.button {
+    @apply w-auto h-12 px-4 py-2 text-xl text-[#1B1B1B] bg-teal-300 border-teal-300 border-4 active:bg-[#1B1B1B] active:text-teal-300 cursor-pointer active:scale-110 duration-100 rounded-md text-center items-center
+}
+
+.REA {
+    @apply w-3/5 min-h-96 bg-teal-600 px-4 pt-4 text-[#1b1b1b] rounded-xl
+}
+
+.REA > h2 {
+    @apply w-full text-start font-bold text-2xl
+}
+
+.REA .content {
+    @apply w-full h-full bg-[#1B1B1B] border-2 border-black
+}

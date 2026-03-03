@@ -1,21 +1,38 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #1B1B1B;
+  --color-secondary: #46ECD5;
+}
+
 main {
     @apply font-mono
 }
 
 .button {
-    @apply w-auto h-12 px-4 py-2 text-xl text-[#1B1B1B] bg-teal-300 border-teal-300 border-4 active:bg-[#1B1B1B] active:text-teal-300 cursor-pointer active:scale-110 duration-100 rounded-md text-center items-center
+    @apply w-auto h-12 px-4 py-2 text-xl text-primary bg-secondary border-teal-300 border-4 active:bg-primary active:text-secondary cursor-pointer active:scale-110 duration-100 rounded-md text-center items-center
 }
 
 .REA {
-    @apply w-3/5 min-h-96 bg-teal-600 px-4 pt-4 text-[#1b1b1b] rounded-xl
+    @apply w-3/5 min-h-96 flex flex-col gap-8 bg-primary px-8 pt-4 pb-8 text-secondary rounded-xl border-4 border-secondary
 }
 
 .REA > h2 {
-    @apply w-full text-start font-bold text-2xl
+    @apply w-full text-start font-bold text-2xl text-secondary
 }
 
 .REA .content {
-    @apply w-full h-full bg-[#1B1B1B] border-2 border-black
+    @apply w-full h-full flex flex-col bg-[#1B1B1B] gap-8
+}
+
+.item {
+    @apply w-full h-auto text-start flex flex-col border-2 border-secondary px-8 py-4 bg-primary text-white
+}
+
+.item > h2 {
+    @apply font-bold text-2xl
+}
+
+.item * {
+    @apply text-lg
 }

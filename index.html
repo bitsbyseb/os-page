@@ -10,24 +10,25 @@
 </head>
 
 <body class="m-0 p-0">
-  <main class="w-full min-h-screen bg-[#1B1B1B] overflow-hidden">
+  <main class="w-full min-h-screen bg-primary">
     <nav
-      class="w-full min-h-14 sticky flex flex-row items-center justify-between border-b-4 border-teal-300 shadow-teal-300 shadow-md py-2 px-4">
+      class="w-full min-h-14 sticky top-0 z-100 flex flex-row items-center justify-between border-b-4 border-secondary shadow-secondary bg-primary shadow-md py-2 px-4">
       <div class="w-auto h-full gap-5 flex flex-row items-center">
         <img src="/cachy.png" alt="cachy" width="50" height="50">
 
-        <h2 class="w-auto text-2xl text-teal-300 underline font-bold italic text-center">Blog de Johan</h2>
+        <h2 class="w-auto text-2xl text-secondary underline font-bold italic text-center">Blog de Johan</h2>
       </div>
 
       <div id="buttons" class="w-auto h-full flex flex-row justify-center items-center gap-4">
-        <button class="button">REA 1</button>
-        <button class="button">REA 2</button>
-        <button class="button">REA 3</button>
+        <button class="button"><a href="#REA1">REA1</a></button>
+        <button class="button"><a href="#REA2">REA2</a></button>
+        <button class="button"><a href="#REA3">REA3</a></button>
       </div>
     </nav>
     <div class="w-full h-full flex flex-col items-center justify-center gap-14  py-20">
       <!-- --- -->
-      <article class="min-w-200 min-h-24 flex flex-row  p-4 rounded-lg text-white shadow-teal-600 border-teal-600 border-4 shadow-xl">
+      <article
+        class="min-w-200 min-h-24 flex flex-row  p-4 rounded-lg text-white shadow-teal-600 border-teal-600 border-4 shadow-xl">
 
         <div class="w-2/3 h-full flex flex-col">
           <h2 class="text-start pl-2 bg-teal-600 text-2xl">Datos Sobre el Estudiante</h2>
@@ -43,17 +44,210 @@
         </div>
       </article>
       <!-- --- -->
-      <section class="REA">
+      <section class="REA" id="REA1">
         <h2>REA 1</h2>
-        <div class="content"></div>
+        <div class="content">
+          <div class="item">
+            <h2>R1-S1 Evolución Histórica: De UNIX a Windows 11</h2>
+            <p>Lo más importante que me quedó de este texto es cómo pasamos de sistemas gigantes que solo hacían una
+              cosa a la vez, a lo que usamos hoy.
+
+            <ul class="list-disc flex flex-col gap-4">
+              <li>
+                <b> UNIX (1969):</b> Es la base de todo. Ken Thompson y Dennis Ritchie lo
+                crearon con una filosofía de "herramientas pequeñas" y diseño multitarea/multiusuario. Al escribirlo en
+                C,
+                se volvió portable, algo que cambió las reglas del juego.
+              </li>
+
+              <li>
+                <b>Linux (1991):</b> Linus Torvalds lanzó el kernel y,
+                al ser código abierto (GPL), permitió que todo el mundo colaborara. Hoy domina la nube, servidores y es
+                la
+                base de Android.
+              </li>
+
+
+              <li>
+                <b>macOS:</b> Me pareció interesante que Apple usa una base UNIX llamada Darwin (mezcla de BSD y
+                el microkernel Mach) para ser estable y seguro.
+              </li>
+
+              <li>
+                <b>Windows:</b> Pasó de ser una interfaz sobre MS-DOS a ser el
+                estándar en computación personal, llegando a Windows 11 que ya integra hasta aplicaciones de Android y
+                un entorno híbrido con Linux mediante WSL 2 (justo lo que estoy usando).
+              </li>
+            </ul>
+            </p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xwdYr6YjR1I?si=88xrFL22MiHhCYU4"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+          </div>
+
+          <div class="item">
+            <h2>🐧 Mi experiencia: Instalando Arch Linux en WSL</h2>
+            <p>
+              Instalar Arch en WSL no fue como bajar una App de la Store. Fue una experiencia de instalación manual,
+              muy similar a lo que harías en una máquina física, pero aprovechando la línea de comandos de Windows.
+
+              <br />
+              <br />
+
+              <b>1. El despliegue inicial:</b>
+              Lo hice de la forma más directa: usando la herramienta de línea de comandos de WSL. Descargué el tarball
+              (el archivo raíz) de Arch y lo importé directamente con el comando wsl --import. Fue mucho más sencillo y
+              limpio que usar instaladores de terceros; en un par de segundos ya tenía el contenedor listo para
+              arrancar.
+
+              <br />
+              <br />
+
+              <b>2. Un sistema "desnudo" (Root):</b>
+              Al entrar por primera vez (wsl -d Arch), me di cuenta de que estaba totalmente solo. No había usuarios, no
+              había seguridad, solo era yo como root. Arch viene minimalista de verdad:
+
+              Contraseñas: Lo primero fue asignarle una clave al root con passwd, porque venía abierto.
+
+              Sin usuario personal: No existía un "Johan". Tuve que crearlo manualmente con useradd -m -G wheel johan.
+
+              <br />
+              <br />
+
+              <b>3. Construyendo el entorno (Paquetes básicos):</b>
+              Como buen Arch, no traía nada. Tuve que configurar los mirrors de pacman y empezar a instalar mis
+              herramientas esenciales:
+
+              <br />
+              <br />
+            <ul class="list-disc flex flex-col gap-4">
+              <li>
+                <b>Sudo:</b> ¡Fundamental! Al principio no podía hacer nada como usuario normal. Instalé sudo, edité el
+                archivo
+                visudo y me di permisos para poder administrar el sistema sin ser root todo el tiempo.
+              </li>
+
+              <li>
+                <b>Editores:</b> Para un fan de la terminal como yo, esto era prioridad. Instalé vi, vim y, por
+                supuesto,
+                neovim
+                (nvim) para tener una configuración de desarrollo decente.
+              </li>
+
+              <li>
+                <b>Base-devel:</b> Instalé el grupo de paquetes básicos para poder compilar y tener las herramientas
+                esenciales
+                de Linux que no vienen por defecto.
+              </li>
+            </ul>
+
+            <br />
+            <br />
+
+            <b>4. Reflexión final:</b>
+            Aunque la instalación desde la CLI de Windows fue rápida, configurar el interior del sistema fue donde
+            realmente aprendí. Tener que crear mi propio usuario, configurar los permisos de sudo y elegir cada editor
+            de texto manualmente me recordó por qué Arch es la mejor forma de entender cómo funciona un sistema
+            operativo por dentro. ¡Ahora tengo un entorno de desarrollo ultra ligero y a mi medida!</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZcqZj9vl0oM?si=7L_oStObZ6CHxSNW"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
+          <div class="item">
+            <h2>Planificación de Procesos: ¿Quién usa la CPU?</h2>
+            <p>
+              Aquí analizamos cómo el SO decide qué proceso se ejecuta.
+              No hay un algoritmo perfecto; todo depende de qué necesitemos.
+
+              <br />
+              <br />
+
+              <b>FIFO (First In, First Out):</b> Es el más
+              simple; el primero que llega es el primero que sale. Es justo, pero si llega un proceso muy largo al
+              principio, bloquea a todos los demás (el famoso "Head-of-Line Blocking").
+
+              <br />
+              <br />
+
+
+              <b>Round Robin (RR):</b> Es el que
+              usamos para sistemas interactivos. A cada proceso le damos un "pedacito" de tiempo (quantum). Si no
+              termina, vuelve a la fila. Es muy equitativo.
+
+              <br />
+              <br />
+
+              <b>SJF (Shortest Job First):</b> Aquí el SO elige el proceso más
+              corto para ejecutarlo primero. Minimiza el tiempo de espera promedio, pero el problema es que es difícil
+              saber cuánto va a durar un proceso antes de que empiece.
+
+              <br />
+              <br />
+
+              <b>CFS (Completely Fair Scheduler):</b> Es el que usa
+              Linux actualmente. En lugar de tiempos fijos, usa el vruntime (tiempo de ejecución virtual) para darle
+              prioridad al proceso que menos tiempo ha usado en la CPU. Usa un "Árbol Rojo-Negro" para que todo sea
+              súper rápido (eficiencia O(log N)).
+            </p>
+          </div>
+
+          <div class="item">
+            <h2>Jerarquía de Memoria: Velocidad vs. Costo</h2>
+            <p>
+              Esto es clave para entender por qué mi PC no es más rápida de lo que ya es. Básicamente, organizamos la
+              memoria en niveles para equilibrar velocidad y presupuesto.
+
+              <br />
+              <br />
+
+            <ul class="list-disc flex flex-col gap-8">
+              <li>
+                <b>Registros (L0):</b> Están pegados a la CPU. Son los
+                más rápidos (1 ciclo) pero apenas guardan unos pocos bytes.
+              </li>
+
+              <li>
+                <b>Caché (L1, L2, L3):</b> Memoria de alta velocidad
+                para que la CPU no tenga que esperar tanto. L1 es la más rápida pero pequeña.
+              </li>
+
+              <li>
+                <b>RAM (Principal):</b> Es nuestra
+                área de trabajo. Tarda entre 100-300 ciclos en responder, lo cual es muchísimo comparado con los
+                registros.
+              </li>
+
+              <li>
+                <b>Disco (SSD/HDD):</b> El almacenamiento masivo. Es persistente (no se borra al apagar) pero es
+                millones de veces más lento que los registros.
+              </li>
+
+              <li>
+                <b>Dato curioso:</b> Los registros son 100 millones de veces más
+                rápidos que un disco duro tradicional.
+              </li>
+            </ul>
+            </p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2wq_q6DQYuc?si=W46dVUWZyCf5vL-q"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
       </section>
       <!-- -- -->
-      <section class="REA">
+      <section class="REA" id="REA2">
         <h2>REA 2</h2>
         <div class="content"></div>
       </section>
       <!-- --- -->
-      <section class="REA">
+      <section class="REA" id="REA3">
         <h2>REA 3</h2>
         <div class="content"></div>
       </section>
